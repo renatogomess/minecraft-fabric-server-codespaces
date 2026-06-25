@@ -56,3 +56,5 @@ Quando o Codespace for encerrado, todos os serviços em execução, incluindo o 
 8. Acesso externo ao servidor
 9. Backup e manutenção
 10. Solução de erros comuns
+
+Abra a pasta docs para inicar o tutorial.
