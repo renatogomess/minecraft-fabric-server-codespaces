@@ -354,7 +354,7 @@ admin
 
 localize o ícone de cadeado na coluna **Edit** e clique nele.
 
-![Localização do botão para alterar a senha do administrador](images/crafty-alterar-senha.png)
+![Localização do botão para alterar a senha do administrador](crafty-alterar-senha.png)
 
 Em seguida:
 
