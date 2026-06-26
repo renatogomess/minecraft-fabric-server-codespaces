@@ -1,8 +1,19 @@
-# Instalando o Crafty Controller no GitHub Codespaces
+# Servidor Minecraft Fabric no GitHub Codespaces
 
-Neste guia, vamos instalar o Crafty Controller dentro de um GitHub Codespace. Ele será usado para criar, configurar e administrar um servidor de Minecraft.
+Este tutorial ensina a criar um servidor de Minecraft Java com Fabric utilizando:
+
+* GitHub Codespaces
+* Crafty Controller
+* Fabric Loader
+* Fabric API
+* Playit.gg
+* Docker
+
+O Crafty Controller será utilizado para administrar o servidor, enquanto o Playit.gg criará um endereço público para que outras pessoas possam entrar.
 
 ---
+
+# Parte 1 — Instalando o Crafty Controller
 
 ## 1. Criar e abrir o Codespace
 
@@ -76,21 +87,13 @@ Execute:
 pip install distro
 ```
 
-O pacote `distro` ajuda o instalador do Crafty a identificar corretamente o sistema Linux utilizado pelo Codespace.
+O pacote `distro` permite que o instalador identifique corretamente o sistema Linux utilizado pelo Codespace.
 
-Caso o instalador apresente o erro:
-
-```text
-ModuleNotFoundError: No module named 'distro'
-```
-
-execute:
+Caso o instalador não encontre o módulo, execute:
 
 ```bash
 sudo python3 -m pip install distro --break-system-packages
 ```
-
-Depois, continue normalmente com a instalação.
 
 ---
 
@@ -102,7 +105,7 @@ Execute:
 git clone https://gitlab.com/crafty-controller/crafty-installer-4.0.git
 ```
 
-Esse comando cria uma pasta chamada:
+Esse comando criará a pasta:
 
 ```text
 crafty-installer-4.0
@@ -120,8 +123,6 @@ Execute:
 cd crafty-installer-4.0
 ```
 
-Agora o terminal estará dentro da pasta que contém o instalador.
-
 ---
 
 ## 7. Iniciar a instalação
@@ -136,7 +137,7 @@ O instalador começará a preparar o Crafty Controller e fará algumas perguntas
 
 ---
 
-## 8. Confirmar o Ubuntu
+## 8. Confirmar a instalação no Ubuntu
 
 Quando aparecer uma pergunta semelhante a:
 
@@ -144,15 +145,13 @@ Quando aparecer uma pergunta semelhante a:
 Would you like to continue installing Crafty on Ubuntu?
 ```
 
-digite:
+Digite:
 
 ```text
 Y
 ```
 
 e pressione **Enter**.
-
-O instalador está confirmando que deve continuar utilizando as configurações compatíveis com Ubuntu.
 
 ---
 
@@ -164,7 +163,7 @@ Quando aparecer:
 Install Crafty to this directory? /var/opt/minecraft/crafty - ['y', 'n']:
 ```
 
-digite:
+Digite:
 
 ```text
 N
@@ -172,13 +171,13 @@ N
 
 e pressione **Enter**.
 
-Vamos instalar o Crafty dentro da pasta do próprio Codespace, facilitando o acesso aos arquivos.
+Vamos instalar o Crafty dentro da pasta do próprio Codespace.
 
 ---
 
 ## 10. Escolher a pasta de instalação
 
-O instalador perguntará em qual diretório o Crafty deve ser instalado.
+O instalador perguntará onde o Crafty deverá ser instalado.
 
 No explorador de arquivos do Codespace:
 
@@ -187,7 +186,7 @@ No explorador de arquivos do Codespace:
 3. Selecione **Copy Path** ou **Copiar Caminho**.
 4. Cole o caminho no terminal.
 
-O caminho deverá ser parecido com:
+O caminho será parecido com:
 
 ```text
 /workspaces/nome-do-repositorio/README.md
@@ -205,15 +204,13 @@ e substitua por:
 Minecraft
 ```
 
-O resultado deverá ficar parecido com:
+O resultado deverá ficar assim:
 
 ```text
 /workspaces/nome-do-repositorio/Minecraft
 ```
 
 Pressione **Enter**.
-
-O nome do repositório será diferente para cada pessoa.
 
 ---
 
@@ -233,8 +230,6 @@ master
 
 e pressione **Enter**.
 
-A opção `master` é a versão recomendada para este tutorial.
-
 ---
 
 ## 12. Não criar um arquivo de serviço
@@ -245,7 +240,7 @@ Quando aparecer:
 Would you like to make a service file for Crafty? - ['y', 'n']:
 ```
 
-digite:
+Digite:
 
 ```text
 N
@@ -253,15 +248,13 @@ N
 
 e pressione **Enter**.
 
-No GitHub Codespaces, iniciaremos o Crafty manualmente sempre que o ambiente for aberto.
+No Codespaces, o Crafty será iniciado manualmente.
 
 ---
 
 ## 13. Iniciar o Crafty Controller
 
-Depois que a instalação terminar, execute o arquivo `run_crafty.sh`.
-
-O comando terá este formato:
+Depois que a instalação terminar, execute:
 
 ```bash
 /workspaces/nome-do-repositorio/Minecraft/run_crafty.sh
@@ -273,24 +266,18 @@ Exemplo:
 /workspaces/minecraft-fabric-server-codespaces/Minecraft/run_crafty.sh
 ```
 
-Substitua:
+Substitua `nome-do-repositorio` pelo nome exato do seu repositório.
 
-```text
-minecraft-fabric-server-codespaces
-```
+Outra opção é:
 
-pelo nome exato do seu repositório.
+1. Abrir a pasta `Minecraft`.
+2. Localizar `run_crafty.sh`.
+3. Clicar com o botão direito.
+4. Selecionar **Copy Path**.
+5. Colar o caminho no terminal.
+6. Pressionar **Enter**.
 
-Uma forma mais simples de encontrar o caminho correto é:
-
-1. Abra a pasta `Minecraft`.
-2. Localize o arquivo `run_crafty.sh`.
-3. Clique nele com o botão direito.
-4. Selecione **Copy Path**.
-5. Cole o caminho no terminal.
-6. Pressione **Enter**.
-
-O Linux diferencia letras maiúsculas e minúsculas. Portanto, `Minecraft` e `minecraft` são nomes diferentes.
+Não feche esse terminal enquanto estiver utilizando o Crafty.
 
 ---
 
@@ -298,24 +285,18 @@ O Linux diferencia letras maiúsculas e minúsculas. Portanto, `Minecraft` e `mi
 
 Com o Crafty em execução:
 
-1. Abra a aba **Portas** ou **Ports** no Codespace.
+1. Abra a aba **Portas** ou **Ports**.
 2. Localize a porta utilizada pelo Crafty.
-3. Clique no endereço exibido na coluna de endereço encaminhado.
-4. O painel será aberto em uma nova aba do navegador.
-
-O GitHub Codespaces cria um endereço temporário para permitir o acesso ao painel executado dentro do ambiente remoto.
-
-Não feche o terminal em que o Crafty está rodando. Ao interromper o processo, o painel também será desligado.
+3. Clique no endereço encaminhado.
+4. O painel será aberto em uma nova aba.
 
 ---
 
-# Primeiro acesso ao Crafty Controller
+# Parte 2 — Primeiro acesso ao Crafty
 
-## 15. Localizar as credenciais iniciais
+## 15. Encontrar as credenciais iniciais
 
-Ao abrir o painel, você será direcionado para a tela de login.
-
-Clique em:
+Na tela de login, clique em:
 
 ```text
 Forgot Password
@@ -327,24 +308,24 @@ ou:
 Esqueci a senha
 ```
 
-Depois, volte ao terminal em que o Crafty está sendo executado.
+Volte ao terminal em que o Crafty está sendo executado.
 
-O terminal mostrará as credenciais iniciais:
+O terminal mostrará:
 
 ```text
 Username
 Password
 ```
 
-Copie o nome de usuário e a senha exibidos e utilize-os para entrar no painel.
+Utilize essas credenciais para entrar no painel.
 
-> Não publique prints do terminal que mostrem suas credenciais.
+> Não publique prints que mostrem o usuário, a senha ou outras credenciais.
 
 ---
 
 ## 16. Alterar a senha do administrador
 
-Depois do primeiro login, você será direcionado para a tela **Panel Config**.
+Depois do primeiro login, será exibida a tela **Panel Config**.
 
 Na linha do usuário:
 
@@ -352,34 +333,25 @@ Na linha do usuário:
 admin
 ```
 
-localize o ícone de cadeado na coluna **Edit** e clique nele.
+clique no ícone de cadeado localizado na coluna **Edit**.
 
 ![Localização do botão para alterar a senha do administrador](crafty-alterar-senha.png)
 
-Em seguida:
+Depois:
 
 1. Digite uma nova senha.
-2. Confirme a nova senha.
+2. Confirme a senha.
 3. Salve a alteração.
-
-Escolha uma senha forte e não a compartilhe no repositório, em prints ou em vídeos.
-
-Para utilizar a imagem no tutorial, salve a captura dentro do repositório com esta estrutura:
-
-```text
-images/
-└── crafty-alterar-senha.png
-```
 
 ---
 
 ## 17. Testar a nova senha
 
-Depois de salvar a alteração:
+Depois de salvar:
 
 1. Clique no ícone do usuário no canto superior direito.
 2. Selecione **Logout**.
-3. Na tela de login, informe:
+3. Entre novamente utilizando:
 
 ```text
 Username: admin
@@ -388,11 +360,401 @@ Username: admin
 4. Digite a nova senha.
 5. Clique em **Login**.
 
-Se o acesso funcionar, a nova senha foi salva corretamente e o primeiro acesso ao Crafty Controller está concluído.
+---
+
+# Parte 3 — Criando o servidor Minecraft Fabric
+
+## 18. Abrir o Crafty novamente
+
+Caso o Codespace tenha sido desligado ou reiniciado, abra um terminal e execute:
+
+```bash
+/workspaces/nome-do-repositorio/Minecraft/run_crafty.sh
+```
+
+Depois:
+
+1. Abra a aba **Portas**.
+2. Clique no endereço do Crafty.
+3. Entre com o usuário `admin`.
+4. Digite a senha cadastrada.
 
 ---
 
-# Resumo dos comandos
+## 19. Criar um novo servidor
+
+No painel do Crafty, clique em:
+
+```text
+Create New Server
+```
+
+---
+
+## 20. Configurar o servidor
+
+Na página de criação, preencha os campos.
+
+### Server Type
+
+Selecione:
+
+```text
+Minecraft Servers
+```
+
+### Server Select
+
+Selecione:
+
+```text
+Fabric
+```
+
+### Server Version
+
+Escolha a versão do Minecraft que deseja utilizar.
+
+Exemplo:
+
+```text
+1.21.11
+```
+
+A versão deve ser compatível com os mods que serão instalados.
+
+### Server Name
+
+Escolha qualquer nome para identificar o servidor.
+
+Exemplo:
+
+```text
+Servidor Fabric
+```
+
+### Memória mínima
+
+Recomendação inicial:
+
+```text
+2 GB
+```
+
+Caso o campo utilize megabytes:
+
+```text
+2048
+```
+
+### Memória máxima
+
+Recomendação inicial:
+
+```text
+6 GB
+```
+
+Caso o campo utilize megabytes:
+
+```text
+6144
+```
+
+A quantidade ideal depende do número de jogadores, dos mods utilizados e da memória disponível no Codespace.
+
+---
+
+## 21. Construir e iniciar o servidor
+
+Depois de revisar as configurações, clique em:
+
+```text
+Build Server
+```
+
+Aguarde o Crafty baixar e preparar os arquivos.
+
+Quando o servidor estiver criado, clique em:
+
+```text
+Start
+```
+
+Na primeira inicialização, será necessário aceitar o EULA do Minecraft.
+
+Quando solicitado, selecione:
+
+```text
+Yes
+```
+
+Depois, clique novamente em **Start**, caso o servidor não inicie automaticamente.
+
+---
+
+## 22. Verificar o `server.properties`
+
+Dentro do servidor:
+
+1. Abra a seção **Files**.
+2. Localize:
+
+```text
+server.properties
+```
+
+3. Abra o arquivo.
+
+Procure pela opção:
+
+```properties
+online-mode=true
+```
+
+Manter essa configuração como `true` ativa a autenticação oficial do Minecraft e impede que jogadores entrem utilizando o nome de outras pessoas.
+
+Depois de alterar qualquer opção no `server.properties`, salve o arquivo e reinicie o servidor.
+
+---
+
+# Parte 4 — Configurando o Playit.gg
+
+O Playit.gg será utilizado para criar um endereço público para o servidor sem precisar abrir portas manualmente no roteador.
+
+## 23. Criar uma conta no Playit.gg
+
+Acesse:
+
+[Playit.gg](https://playit.gg/)
+
+Crie uma conta ou faça login.
+
+---
+
+## 24. Criar um agente Docker
+
+No painel do Playit.gg:
+
+1. Abra a área de configuração de agentes.
+2. Escolha a instalação utilizando **Docker**.
+3. Defina um nome para o agente.
+
+Exemplo:
+
+```text
+server
+```
+
+O Playit mostrará duas opções:
+
+* Docker Run
+* Docker Compose
+
+Para este tutorial, utilize somente:
+
+```text
+Docker Run
+```
+
+Clique em **Copy** para copiar o comando completo.
+
+> O comando contém uma `SECRET_KEY`. Não compartilhe essa chave, não coloque o comando real no GitHub e não publique prints mostrando a credencial.
+
+O comando apresentado terá um formato semelhante a:
+
+```bash
+docker run --rm -it --net=host \
+  -e SECRET_KEY="COLE_AQUI_SUA_SECRET_KEY" \
+  ghcr.io/playit-cloud/playit-agent:0.17
+```
+
+No tutorial público, utilize apenas esse modelo. Cada usuário deverá copiar o próprio comando no painel do Playit.gg.
+
+---
+
+## 25. Executar o agente no Codespace
+
+Abra um novo terminal no Codespace.
+
+Não utilize o terminal que está executando o Crafty.
+
+Cole o comando **Docker Run** fornecido pelo Playit.gg e pressione **Enter**.
+
+O terminal começará a mostrar mensagens semelhantes a:
+
+```text
+tunnel running, 0 tunnels registered
+```
+
+Isso significa que o agente está online, mas ainda não possui nenhum túnel configurado.
+
+Deixe esse terminal aberto.
+
+---
+
+## 26. Confirmar que o agente está conectado
+
+Volte ao painel do Playit.gg.
+
+O agente deverá aparecer como conectado.
+
+Uma mensagem semelhante a esta poderá ser exibida:
+
+```text
+Connected
+```
+
+ou:
+
+```text
+Connected to NYC, New York USA
+```
+
+Isso confirma que o agente do Codespace está vinculado à sua conta.
+
+---
+
+## 27. Criar o túnel do Minecraft
+
+No painel do Playit.gg:
+
+1. Abra a aba **Tunnels**.
+2. Clique em **Create Tunnel**.
+3. Escolha **Minecraft Java**.
+4. Selecione o agente criado anteriormente.
+5. Configure o endereço local como:
+
+```text
+127.0.0.1
+```
+
+6. Configure a porta local como:
+
+```text
+25565
+```
+
+7. Salve o túnel.
+
+Depois disso, o Playit.gg criará um endereço público para o servidor.
+
+O endereço poderá ter um formato parecido com:
+
+```text
+nome-do-servidor.playit.gg
+```
+
+Copie o endereço gerado e envie para as pessoas que entrarão no servidor.
+
+---
+
+# Parte 5 — Entrando no servidor
+
+No Minecraft Java:
+
+1. Abra **Multiplayer**.
+2. Clique em **Add Server**.
+3. Escolha um nome para o servidor.
+4. Cole o endereço gerado pelo Playit.gg.
+5. Salve.
+6. Entre no servidor.
+
+Todos os jogadores deverão utilizar:
+
+* a mesma versão do Minecraft;
+* o Fabric Loader compatível;
+* os mesmos mods exigidos pelo servidor;
+* versões compatíveis dos mods.
+
+---
+
+# Como iniciar o servidor novamente
+
+Quando o GitHub Codespace ficar ocioso, for desligado ou for aberto novamente, será necessário iniciar os componentes manualmente.
+
+## 1. Iniciar o Crafty Controller
+
+Abra um terminal e execute:
+
+```bash
+/workspaces/nome-do-repositorio/Minecraft/run_crafty.sh
+```
+
+Exemplo:
+
+```bash
+/workspaces/minecraft-fabric-server-codespaces/Minecraft/run_crafty.sh
+```
+
+Mantenha esse terminal aberto.
+
+Depois:
+
+1. Abra a aba **Portas**.
+2. Clique no endereço do Crafty.
+3. Faça login.
+4. Entre no servidor criado.
+5. Clique em **Start**.
+
+---
+
+## 2. Iniciar o Playit.gg
+
+Abra outro terminal.
+
+Entre no painel do Playit.gg, localize o agente e copie novamente o comando **Docker Run**.
+
+O comando terá este formato:
+
+```bash
+docker run --rm -it --net=host \
+  -e SECRET_KEY="SUA_SECRET_KEY" \
+  ghcr.io/playit-cloud/playit-agent:0.17
+```
+
+Mantenha esse terminal aberto.
+
+> Não salve a chave real no README, em scripts públicos ou em commits do GitHub.
+
+---
+
+## 3. Confirmar que tudo está funcionando
+
+Antes de tentar entrar no Minecraft, confirme:
+
+* O Crafty Controller está executando.
+* O servidor está com o status online.
+* O terminal do Playit.gg está aberto.
+* O agente aparece conectado no painel do Playit.gg.
+* O túnel Minecraft Java está ativo.
+* A porta local está configurada como `25565`.
+
+---
+
+# Resumo dos terminais
+
+Durante o funcionamento do servidor, mantenha dois terminais ativos.
+
+### Terminal 1 — Crafty Controller
+
+```bash
+/workspaces/nome-do-repositorio/Minecraft/run_crafty.sh
+```
+
+### Terminal 2 — Playit.gg
+
+```bash
+docker run --rm -it --net=host \
+  -e SECRET_KEY="SUA_SECRET_KEY" \
+  ghcr.io/playit-cloud/playit-agent:0.17
+```
+
+O servidor de Minecraft também deverá estar iniciado dentro do painel do Crafty.
+
+---
+
+# Resumo dos comandos de instalação
 
 ```bash
 sudo apt update && sudo apt upgrade && sudo apt install git
@@ -424,7 +786,7 @@ Depois da instalação:
 /workspaces/nome-do-repositorio/Minecraft/run_crafty.sh
 ```
 
-Caso apareça o erro relacionado ao módulo `distro`:
+Caso seja necessário instalar o módulo `distro` no Python utilizado pelo instalador:
 
 ```bash
 sudo python3 -m pip install distro --break-system-packages
@@ -442,4 +804,14 @@ sudo python3 -m pip install distro --break-system-packages
 | Branch do Crafty                        | `master`                                    |
 | Criar arquivo de serviço                | `N`                                         |
 
-Com isso, o Crafty Controller estará instalado, iniciado, protegido por uma nova senha e acessível pelo navegador.
+---
+
+# Observações importantes
+
+* O GitHub Codespaces pode desligar o ambiente por inatividade.
+* O servidor não ficará disponível quando o Codespace estiver desligado.
+* Não feche os terminais do Crafty e do Playit enquanto estiver jogando.
+* Nunca publique senhas ou a `SECRET_KEY` do Playit.gg.
+* Não envie a pasta completa do servidor para o GitHub.
+* Mundos, logs, bancos de dados e configurações privadas devem ficar fora do versionamento.
+* Verifique sempre a compatibilidade entre Minecraft, Fabric Loader, Fabric API e mods.
